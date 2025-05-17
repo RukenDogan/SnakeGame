@@ -7,7 +7,7 @@ let positionDeMonSnakeX = 50;
 function mouveSnakeDown() {
     positionDeMonSnakeY += 10;
     snake.style.top = positionDeMonSnakeY + "px";
-    if (positionDeMonSnakeY == 580) {
+    if (positionDeMonSnakeY == 480) {
     positionDeMonSnakeY = 0;
     console.log(positionDeMonSnakeY);
     }
