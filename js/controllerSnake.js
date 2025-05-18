@@ -23,7 +23,7 @@ function moveSnakeUp() {
     positionDeMonSnakeY -= 20;
     snake.style.top = positionDeMonSnakeY + "px";
     if (positionDeMonSnakeY == 0) {
-    positionDeMonSnakeY = 490;
+    positionDeMonSnakeY = 480;
     }
 }
 
@@ -106,8 +106,8 @@ function growSnake() {
 }
 
 function repositionApple() {
-    let randomX = Math.floor(Math.random() * 60) * 10;
-    let randomY = Math.floor(Math.random() * 50) * 10; 
+    let randomX = Math.floor(Math.random() * 60) * 20;
+    let randomY = Math.floor(Math.random() * 50) * 20; 
 
     apple.style.left = randomX + "px";
     apple.style.top = randomY + "px";
