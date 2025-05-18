@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -11,6 +16,17 @@
     width: 600px;
     background-color: black;
     position: relative;
+    border-radius: 20px;
+}
+
+.score {
+    position: absolute;
+    top: calc(50% - 300px);
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    z-index: 1;
 }
 
 #snake {
