@@ -1,15 +1,16 @@
 let snake = document.getElementById("snake");
-let positionDeMonSnakeY = 50;
-let positionDeMonSnakeX = 50;
+let positionDeMonSnakeY = 60;
+let positionDeMonSnakeX = 60;
 
 let apple = document.getElementById("apple");
 apple.style.left = "100px";
 apple.style.top = "100px";
 
+// Création variable pour que le serpent s'agrandisse à chaque fois qu'il touche la pomme
 let segments = [snake];
 
 
-function mouveSnakeDown() {
+function moveSnakeDown() {
     positionDeMonSnakeY += 10;
     snake.style.top = positionDeMonSnakeY + "px";
     if (positionDeMonSnakeY == 480) {
@@ -18,7 +19,7 @@ function mouveSnakeDown() {
     
 }
 
-function mouveSnakeUp() {
+function moveSnakeUp() {
     positionDeMonSnakeY -= 10;
     snake.style.top = positionDeMonSnakeY + "px";
     if (positionDeMonSnakeY == 0) {
@@ -26,7 +27,7 @@ function mouveSnakeUp() {
     }
 }
 
-function mouveSnakeLeft() {
+function moveSnakeLeft() {
     positionDeMonSnakeX -= 10;
     snake.style.left = positionDeMonSnakeX + "px";
     if (positionDeMonSnakeX == 0) {
@@ -35,7 +36,7 @@ function mouveSnakeLeft() {
     
 }
 
-function mouveSnakeRight() {
+function moveSnakeRight() {
     positionDeMonSnakeX += 10;
     snake.style.left = positionDeMonSnakeX + "px";
     if (positionDeMonSnakeX == 580) {
@@ -59,7 +60,7 @@ setInterval(function () {
         segments[i].style.top = segments[i - 1].style.top;
     }
 
-    mouveSnake(keydownSave);
+    moveSnake(keydownSave);
 
     if (
     positionDeMonSnakeX === parseInt(apple.style.left) &&
@@ -72,21 +73,21 @@ setInterval(function () {
 }, 190);
 
 
-function mouveSnake(keydown) {
+function moveSnake(keydown) {
     if (keydown == "ArrowRight") {
-        mouveSnakeRight();
+        moveSnakeRight();
 
     }
     if (keydown == "ArrowLeft") {
-        mouveSnakeLeft();
+        moveSnakeLeft();
 
     }
     if (keydown == "ArrowUp") {
-        mouveSnakeUp();
+        moveSnakeUp();
 
     }
     if (keydown == "ArrowDown") {
-        mouveSnakeDown();
+        moveSnakeDown();
 
     }
 }
