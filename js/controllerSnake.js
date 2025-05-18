@@ -11,7 +11,7 @@ let segments = [snake];
 
 
 function moveSnakeDown() {
-    positionDeMonSnakeY += 10;
+    positionDeMonSnakeY += 20;
     snake.style.top = positionDeMonSnakeY + "px";
     if (positionDeMonSnakeY == 480) {
     positionDeMonSnakeY = 0;
@@ -20,7 +20,7 @@ function moveSnakeDown() {
 }
 
 function moveSnakeUp() {
-    positionDeMonSnakeY -= 10;
+    positionDeMonSnakeY -= 20;
     snake.style.top = positionDeMonSnakeY + "px";
     if (positionDeMonSnakeY == 0) {
     positionDeMonSnakeY = 490;
@@ -28,7 +28,7 @@ function moveSnakeUp() {
 }
 
 function moveSnakeLeft() {
-    positionDeMonSnakeX -= 10;
+    positionDeMonSnakeX -= 20;
     snake.style.left = positionDeMonSnakeX + "px";
     if (positionDeMonSnakeX == 0) {
     positionDeMonSnakeX = 580;
@@ -37,7 +37,7 @@ function moveSnakeLeft() {
 }
 
 function moveSnakeRight() {
-    positionDeMonSnakeX += 10;
+    positionDeMonSnakeX += 20;
     snake.style.left = positionDeMonSnakeX + "px";
     if (positionDeMonSnakeX == 580) {
     positionDeMonSnakeX = 0;
