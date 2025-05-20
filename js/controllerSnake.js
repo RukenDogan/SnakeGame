@@ -1,14 +1,15 @@
 // Variable qui récupère le serpent dans le HTML
 let snake = document.getElementById("snake");
 
-// Position initiale du serpent
-let positionDeMonSnakeX = parseInt(getComputedStyle(snake).left);
-let positionDeMonSnakeY = parseInt(getComputedStyle(snake).top);
+snake.style.left = "40px"; // Position initiale du serpent
+snake.style.top = "100px";
+
+let positionDeMonSnakeX = parseInt(snake.style.left); // Position initiale du serpent
+let positionDeMonSnakeY = parseInt(snake.style.top);
 
 let apple = document.getElementById("apple");
 
-// Position initiale de la pomme
-apple.style.left = "100px";
+apple.style.left = "100px"; // Position initiale de la pomme
 apple.style.top = "100px";
 
 // Création variable des segments sous forme de tableau pour que le serpent s'agrandisse à chaque fois qu'il touche la pomme
@@ -20,8 +21,9 @@ let scoreValue = 0;
 // Fonctions pour déplacer le serpent et le garder dans la zone de jeu (s'il sort de la zone de jeu, il réapparaît de l'autre côté)
 function moveSnakeDown() {
     positionDeMonSnakeY += 20;
-    if (positionDeMonSnakeY == 480) {
+    if (positionDeMonSnakeY == 500) {
     positionDeMonSnakeY = 0;
+    console.log(positionDeMonSnakeY);
     } else {
     positionDeMonSnakeY = positionDeMonSnakeY;
     }
@@ -30,8 +32,9 @@ function moveSnakeDown() {
 
 function moveSnakeUp() {
     positionDeMonSnakeY -= 20;
-    if (positionDeMonSnakeY == 0) {
+    if (positionDeMonSnakeY == -20) {
     positionDeMonSnakeY = 480;
+    console.log(positionDeMonSnakeY);
     } else {
     positionDeMonSnakeY = positionDeMonSnakeY;
     }
@@ -40,8 +43,9 @@ function moveSnakeUp() {
 
 function moveSnakeLeft() {
     positionDeMonSnakeX -= 20;
-    if (positionDeMonSnakeX == 0) {
+    if (positionDeMonSnakeX == -20) {
     positionDeMonSnakeX = 580;
+    console.log(positionDeMonSnakeX);
     } else {        
     positionDeMonSnakeX = positionDeMonSnakeX;
     }
@@ -50,14 +54,14 @@ function moveSnakeLeft() {
 
 function moveSnakeRight() {
     positionDeMonSnakeX += 20;
-    if (positionDeMonSnakeX == 580) {
+    if (positionDeMonSnakeX == 600) {
     positionDeMonSnakeX = 0;
     snake.style.left = positionDeMonSnakeX + "px";
-    } 
-
+    } else {
+    positionDeMonSnakeX = positionDeMonSnakeX;
+    }
     snake.style.left = positionDeMonSnakeX + "px";
 }
-
 
 
 let keydownSave = "";
@@ -80,38 +84,34 @@ setInterval(function () {
 
     // Si le serpent touche la pomme, il s'agrandit et la pomme se repositionne
     if (
-    positionDeMonSnakeX === parseInt(getComputedStyle(apple).left) &&
-    positionDeMonSnakeY === parseInt(getComputedStyle(apple).top)
+    positionDeMonSnakeX === parseInt(apple.style.left) &&
+    positionDeMonSnakeY === parseInt(apple.style.top)
     ) {
     growSnake();
     repositionApple();
     }
-
 }, 190); // Intervalle de déplacement du serpent en millisecondes
+
 
 // Fonction pour déplacer le serpent en fonction de la touche pressée
 function moveSnake(keydown) {
     if (keydown == "ArrowRight") {
         moveSnakeRight();
-
     }
     if (keydown == "ArrowLeft") {
         moveSnakeLeft();
-
     }
     if (keydown == "ArrowUp") {
         moveSnakeUp();
-
     }
     if (keydown == "ArrowDown") {
         moveSnakeDown();
-
     }
 }
 
+
 // Fonction pour agrandir le serpent (en se clonant)
 function growSnake() {
-    let snake = document.getElementById("snake"); // Récupération du segment du serpent
     let newSegment = snake.cloneNode(true); // Copie le premier segment du serpent
     let lastSegment = segments[segments.length - 1]; // Récupère le dernier segment actuel
 
@@ -123,19 +123,28 @@ function growSnake() {
     segments.push(newSegment); // Ajoute le nouveau segment au tableau des segments
 
     scoreValue = scoreValue + 1;
-    score.innerHTML = "Score : " +scoreValue;
+    score.innerHTML = "Score : " + scoreValue; // Met à jour le score affiché
 
     // score++;
     // document.getElementById("score").innerHTML = scoreValue; // Met à jour le score affiché
 }
 
+
 // Fonction pour repositionner la pomme à un endroit aléatoire
 function repositionApple() {
     // let gameArea = document.querySelector('.game-area');
-    // let apple = document.getElementById('apple');
     
     let randomX = Math.floor(Math.random() * 25) * 20; 
     let randomY = Math.floor(Math.random() * 30) * 20; 
+    console.log(randomX);
+    console.log(randomY);
+    if (randomY > 500) {
+        repositionApple();
+        return;
+    } else if (randomX > 600) {
+        repositionApple();
+        return;
+    } 
 
     apple.style.left = randomX + "px";
     apple.style.top = randomY + "px";
