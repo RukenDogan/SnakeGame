@@ -17,6 +17,7 @@
     width: 600px;
     background-color: black;
     position: relative;
+    margin: 0 auto; /* centre la zone de jeu */
     border-radius: 20px;
 }
 
@@ -50,22 +51,3 @@
     left: 100px;
 }
 
-.touch-controls {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.touch-controls button {
-    font-size: 24px;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 10px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-}
-
-.touch-controls button:active {
-    background-color: #388E3C;
-}
