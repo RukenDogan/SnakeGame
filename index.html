@@ -3,18 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>SnakeGame</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="score"> <h1 id="score">0</h1> </div>
-            <div class="game-area">
-                <div id="snake"></div>
-                <div id="apple"></div>
-            </div>
+        <div class="score">
+            <h1 id="score">0</h1>
+        </div>
+        <div class="game-area">
+            <div id="snake"></div>
+            <div id="apple"></div>
+        </div>
+
+        <div class="touch-controls">
+            <button onclick="keydownSave='ArrowUp'">⬆️</button><br>
+            <button onclick="keydownSave='ArrowLeft'">⬅️</button>
+            <button onclick="keydownSave='ArrowDown'">⬇️</button>
+            <button onclick="keydownSave='ArrowRight'">➡️</button>
+        </div>
+        
     </div>
 
     <script src="js/controllerSnake.js"></script>
