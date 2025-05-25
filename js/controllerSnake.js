@@ -82,6 +82,8 @@ setInterval(function () {
 
     moveSnake(keydownSave);
 
+    checkCollision();
+
     // Si le serpent touche la pomme, il s'agrandit et la pomme se repositionne
     if (
     positionDeMonSnakeX === parseInt(apple.style.left) &&
@@ -148,4 +150,17 @@ function repositionApple() {
 
     apple.style.left = randomX + "px";
     apple.style.top = randomY + "px";
+}
+
+function checkCollision() {
+    // Vérifie si le serpent touche un segment de lui-même
+    for (let i = 1; i < segments.length; i++) {
+        if (
+            positionDeMonSnakeX === parseInt(segments[i].style.left) &&
+            positionDeMonSnakeY === parseInt(segments[i].style.top)
+        ) {
+            alert("Game Over! Your score was: " + scoreValue);
+            location.reload(); // Recharge la page pour recommencer le jeu
+        }
+    }
 }
